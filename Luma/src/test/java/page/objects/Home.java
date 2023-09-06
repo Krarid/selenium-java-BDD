@@ -1,46 +1,48 @@
 package page.objects;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
 
 public class Home {
 	
+	@FindBy(css = "li.product-item" )
+	@CacheLookup
+	private List<WebElement> hotSellers;
+	
 	private WebDriver driver;
 	private String url = "https://magento.softwaretestingboard.com/";
-  
-	@BeforeTest
-  	public void beforeTest() 
-  	{
-		driver = new ChromeDriver();
+	
+	public Home(WebDriver driver)
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void visitLuma()
+	{
 		driver.get(url);
-  	}
-	
-	@Test
-	public void login() 
-	{
-		String title = driver.getTitle();
-		Assert.assertEquals(title, "Home Page");
 	}
 	
-	@Test
-	public void signIn()
+	public void clickOnHotSeller(int hotSeller)
 	{
-		WebElement signIn = driver.findElement(By.cssSelector("li > a[href*='login']"));
-		signIn.click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		String title = driver.getTitle();
-		Assert.assertEquals(title, "Customer Login");
+		hotSellers.get(hotSeller).click();
+		
+		try {
+			wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("div.size > div.clearfix > div.swatch-option")) );
+		} catch( TimeoutException e ) {
+			System.err.println(e);
+		}
 	}
-
-	@AfterTest
-  	public void afterTest() 
-  	{
-		driver.quit();
-  	}
 }
