@@ -44,8 +44,13 @@ public class WhatIsNew {
 		newInMenMap.put("Shorts", 5);
 	}
 	
-	public void clickOnSection( String section )
+	public void clickOnWomenSection( String section )
 	{
 		newInWomen.get(newInWomenMap.get(section)).click();
+	}
+	
+	public void clickOnMenSection( String section )
+	{
+		newInMen.get(newInMenMap.get(section)).click();
 	}
 }

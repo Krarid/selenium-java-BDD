@@ -11,8 +11,13 @@ public class WhatIsNewSteps {
 		this.browser = browser;
 	}
 	
-	@Given("I click on {string} section")
-  	public void clickOnSection(String section) {
-		browser.whatIsNew.clickOnSection(section);
+	@Given("I click on {string} women section")
+  	public void clickOnWomenSection(String section) {
+		browser.whatIsNew.clickOnWomenSection(section);
+	}
+	
+	@Given("I click on {string} men section")
+  	public void clickOnMenSection(String section) {
+		browser.whatIsNew.clickOnMenSection(section);
 	}
 }
