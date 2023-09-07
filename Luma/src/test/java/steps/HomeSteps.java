@@ -19,9 +19,14 @@ public class HomeSteps {
 		browser.home.visitLuma();
 	}
 	
+	@Given("I click on What is New")
+	public void clickOnWhatIsNew()
+	{
+		browser.home.clickOnWhatIsNew();
+	}
+	
 	@When("I add Hero Hoodie to the cart")
 	public void addItemToTheCart() {
-		browser.home.clickOnHotSeller(3);
 		browser.product.selectSize(3);
 		browser.product.selectColor(2);
 		browser.product.addToCart();

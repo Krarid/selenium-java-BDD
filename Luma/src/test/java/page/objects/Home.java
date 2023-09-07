@@ -15,9 +15,9 @@ import java.util.List;
 
 public class Home {
 	
-	@FindBy(css = "li.product-item" )
+	@FindBy(css = ".navigation a[href*='what-is-new']")
 	@CacheLookup
-	private List<WebElement> hotSellers;
+	private WebElement whatIsNew;
 	
 	private WebDriver driver;
 	private String url = "https://magento.softwaretestingboard.com/";
@@ -33,16 +33,8 @@ public class Home {
 		driver.get(url);
 	}
 	
-	public void clickOnHotSeller(int hotSeller)
+	public void clickOnWhatIsNew()
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		
-		hotSellers.get(hotSeller).click();
-		
-		try {
-			wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("div.size > div.clearfix > div.swatch-option")) );
-		} catch( TimeoutException e ) {
-			System.err.println(e);
-		}
+		whatIsNew.click();
 	}
 }
