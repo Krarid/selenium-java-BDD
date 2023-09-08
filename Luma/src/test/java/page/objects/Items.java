@@ -1,5 +1,8 @@
 package page.objects;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -13,6 +16,10 @@ public class Items {
 	@CacheLookup
 	private WebElement title;
 	
+	@FindBy(css = "li.product-item")
+	@CacheLookup
+	private List<WebElement> items;
+	
 	private WebDriver driver;
 	
 	public Items(WebDriver driver)
@@ -24,5 +31,19 @@ public class Items {
 	public void IsUserInThePage(String page)
 	{
 		Assert.assertEquals(title.getText(), page);
+	}
+	
+	public void isItemDisplayedInThePage(String itemName)
+	{
+		boolean isDisplayed = false;
+		
+		for( WebElement item : items ) {
+			if( itemName.compareTo(item.findElement(By.cssSelector("strong a")).getText()) == 0 ) {
+				isDisplayed = true;
+				break;
+			}
+		}
+		
+		Assert.assertTrue(isDisplayed);
 	}
 }

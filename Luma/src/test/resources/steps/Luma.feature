@@ -33,3 +33,14 @@ Feature: Luma
     | Tanks									|
     | Pants									|
     | Shorts								|
+    
+	@LUMA-3
+	Scenario Outline: Women tops can be searched
+		Given I search "<item>" item
+		When I click on search autocomplete 
+		Then I validate the "<item>" is displayed in the page
+		
+		Examples:
+		| item								|
+		| Jade Yoga Jacket		|
+		| Diva Gym Tee				|

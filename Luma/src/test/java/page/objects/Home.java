@@ -19,6 +19,14 @@ public class Home {
 	@CacheLookup
 	private WebElement whatIsNew;
 	
+	@FindBy(css = "input#search")
+	@CacheLookup
+	private WebElement search;
+	
+	@FindBy(css = "div#search_autocomplete ul li")
+	@CacheLookup
+	private List<WebElement> searchAutocomplete;
+	
 	private WebDriver driver;
 	private String url = "https://magento.softwaretestingboard.com/";
 	
@@ -36,5 +44,19 @@ public class Home {
 	public void clickOnWhatIsNew()
 	{
 		whatIsNew.click();
+	}
+	
+	public void searchItem(String item)
+	{
+		search.sendKeys(item);
+	}
+	
+	public void clickOnAutocomplete()
+	{	
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+		
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div#search_autocomplete ul li")));
+		
+		searchAutocomplete.get(0).click();
 	}
 }

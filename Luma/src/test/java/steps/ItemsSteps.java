@@ -11,9 +11,17 @@ public class ItemsSteps {
 		this.browser = browser;
 	}
 
+	/* LUMA-1 | LUMA-2 */
 	@Then("I validate I am in the {string} page")
 	public void validateIAmInThePage(String page) 
 	{
 		  browser.items.IsUserInThePage(page);
+	}
+	
+	/* LUMA-3 */
+	@Then("I validate the {string} is displayed in the page")
+	public void validateTheItemIsDisplayedInThePage(String item)
+	{
+		browser.items.isItemDisplayedInThePage(item);
 	}
 }

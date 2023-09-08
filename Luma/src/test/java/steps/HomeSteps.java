@@ -14,16 +14,32 @@ public class HomeSteps {
 		this.browser = browser;
 	}
 	
+	/* PRECONDITION */
 	@Given("I visit Luma page")
 	public void visitLumaPage() {
 		browser.home.visitLuma();
 	}
 	
+	/* LUMA-1 | LUMA-2 */
 	@Given("I click on What is New")
 	public void clickOnWhatIsNew()
 	{
 		browser.home.clickOnWhatIsNew();
 	}
+	
+	/* LUMA-3 */
+	@Given("I search {string} item")
+	public void searchItem(String item)
+	{
+		browser.home.searchItem(item);
+	}
+	
+	@When("I click on search autocomplete")
+	public void clickOnAutocomplete()
+	{
+		browser.home.clickOnAutocomplete();
+	}
+	
 	
 	@When("I add Hero Hoodie to the cart")
 	public void addItemToTheCart() {
