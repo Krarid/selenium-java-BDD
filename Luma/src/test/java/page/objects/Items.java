@@ -38,7 +38,7 @@ public class Items {
 		boolean isDisplayed = false;
 		
 		for( WebElement item : items ) {
-			if( itemName.compareTo(item.findElement(By.cssSelector("strong a")).getText()) == 0 ) {
+			if( item.findElement(By.cssSelector("strong a")).getText().contains(itemName) ) {
 				isDisplayed = true;
 				break;
 			}

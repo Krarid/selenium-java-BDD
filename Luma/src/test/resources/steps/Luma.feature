@@ -55,3 +55,14 @@ Feature: Luma
 		| item									|
 		| Portia Capri					|
 		| Artemis Running Short	|
+		
+	@LUMA-5
+	Scenario Outline: Men tops can be searched
+		Given I search "<item>" item
+		When I click on search autocomplete 
+		Then I validate the "<item>" is displayed in the page
+		
+		Examples:
+		| item									|
+		| Typhon Performance		|
+		| Logan HeatTec					|
