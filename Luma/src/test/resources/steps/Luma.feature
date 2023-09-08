@@ -44,3 +44,14 @@ Feature: Luma
 		| item								|
 		| Jade Yoga Jacket		|
 		| Diva Gym Tee				|
+		
+	@LUMA-4
+	Scenario Outline: Women bottoms can be searched
+		Given I search "<item>" item
+		When I click on search autocomplete 
+		Then I validate the "<item>" is displayed in the page
+		
+		Examples:
+		| item									|
+		| Portia Capri					|
+		| Artemis Running Short	|
