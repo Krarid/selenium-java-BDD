@@ -66,3 +66,14 @@ Feature: Luma
 		| item									|
 		| Typhon Performance		|
 		| Logan HeatTec					|
+		
+	@LUMA-6
+	Scenario Outline: Men bottoms can be searched
+		Given I search "<item>" item
+		When I click on search autocomplete 
+		Then I validate the "<item>" is displayed in the page
+		
+		Examples:
+		| item			|
+		| Livingston|	
+		| Kratos		|
