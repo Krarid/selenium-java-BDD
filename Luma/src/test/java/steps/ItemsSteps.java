@@ -24,4 +24,11 @@ public class ItemsSteps {
 	{
 		browser.items.isItemDisplayedInThePage(item);
 	}
+	
+	/* LUMA-7 */
+	@Then("I validate the {string} message gets displayed")
+	public void validateTheNoResultsMessageGetsDisplayed(String message)
+	{
+		browser.items.isNoSearchMessageDisplayed(message);
+	}
 }

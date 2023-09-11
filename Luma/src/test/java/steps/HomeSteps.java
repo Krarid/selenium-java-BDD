@@ -48,6 +48,12 @@ public class HomeSteps {
 		browser.product.addToCart();
 	}
 	
+	@When("I hit Enter button")
+	public void hitEnterButton()
+	{
+		browser.home.hitEnterButton();
+	}
+	
 	@Then("I validate the Hero Hoodie was added to the cart")
 	public void validateTheItemWasAddedToTheCart() {
 		browser.product.isItemInTheCart();

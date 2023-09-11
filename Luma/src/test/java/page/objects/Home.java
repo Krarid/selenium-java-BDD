@@ -1,6 +1,7 @@
 package page.objects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -48,6 +49,11 @@ public class Home {
 	public void searchItem(String item)
 	{
 		search.sendKeys(item);
+	}
+	
+	public void hitEnterButton()
+	{
+		search.sendKeys(Keys.ENTER);
 	}
 	
 	public void clickOnAutocomplete()

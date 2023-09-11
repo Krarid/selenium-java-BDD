@@ -75,5 +75,15 @@ Feature: Luma
 		
 		Examples:
 		| item			|
-		| Livingston|	
+		| Livingston|
 		| Kratos		|
+		
+	@LUMA-7
+	Scenario Outline: No items are displayed when searching non-existing items
+		Given I search "<item>" item
+		When I hit Enter button
+		Then I validate the "Your search returned no results." message gets displayed
+		
+	Examples:
+	| item			|
+	|	QWERTY		|

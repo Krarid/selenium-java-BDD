@@ -20,6 +20,10 @@ public class Items {
 	@CacheLookup
 	private List<WebElement> items;
 	
+	@FindBy(css = "div.message.notice")
+	@CacheLookup
+	private WebElement noSearchMessage;
+	
 	private WebDriver driver;
 	
 	public Items(WebDriver driver)
@@ -45,5 +49,10 @@ public class Items {
 		}
 		
 		Assert.assertTrue(isDisplayed);
+	}
+	
+	public void isNoSearchMessageDisplayed(String noSearch)
+	{
+		Assert.assertEquals(noSearchMessage.getText(), noSearch );
 	}
 }
