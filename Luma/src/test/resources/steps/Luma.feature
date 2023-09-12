@@ -154,3 +154,13 @@ Feature: Luma
 	| First Name	|	Last Name	|	Email									|	Password		|	Confirm password	|
 	|	Test				|	Test			|	vohola2224@sesxe.com	|	Test123@QA$	|	Test123@QA$				|
 	Then I validate my account was created
+	
+	@LUMA-14
+	Scenario Outline: User cannot sign in with incorrect credentials
+	Given I go to login page
+	When I enter "<username>" and "<password>" as my credentials
+	Then I validate an error message is displayed
+	
+		Examples:
+	|	username										|	password		|
+	| nonexistingaccount@test.com	|	Test123@QA$	|

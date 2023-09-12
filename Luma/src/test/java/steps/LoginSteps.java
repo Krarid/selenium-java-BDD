@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginSteps {
@@ -15,5 +16,11 @@ public class LoginSteps {
 	public void enterMyCredentials(String username, String password)
 	{
 		browser.login.enterCredentials(username, password);
+	}
+	
+	@Then("I validate an error message is displayed")
+	public void validateAnErrorMessageIsDisplayed()
+	{
+		browser.login.isLoginErrorMessageDisplayed();
 	}
 }
