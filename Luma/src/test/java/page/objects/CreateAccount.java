@@ -1,6 +1,7 @@
 package page.objects;
 
 import java.time.Duration;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -56,11 +57,38 @@ public class CreateAccount {
 	{
 		firstName.sendKeys(account.row(1).get(0));
 		lastName.sendKeys(account.row(1).get(1));
-		email.sendKeys(account.row(1).get(2));
+		email.sendKeys( generateEmail() + account.row(1).get(2));
 		password.sendKeys(account.row(1).get(3));
 		passwordConfirmation.sendKeys(account.row(1).get(4));
 		
 		createAccount.click();
+	}
+	
+	private String generateEmail()
+	{
+		Random rand = new Random();
+		
+		String generatedEmail = "";
+		
+		for( int i = 0; i < 8; i++ ) {
+			switch( rand.nextInt(3) ) {
+				case 0:
+					generatedEmail += (char) (65 + rand.nextInt(26));
+				break;
+				
+				case 1:
+					generatedEmail += (char) (97 + rand.nextInt(26));
+				break;
+				
+				case 2:
+					generatedEmail += (char) (48 + rand.nextInt(10));
+				break;
+			}
+		}
+		
+		System.out.println(generatedEmail);
+		
+		return generatedEmail;
 	}
 	
 	public void wasTheAccountCreated()
