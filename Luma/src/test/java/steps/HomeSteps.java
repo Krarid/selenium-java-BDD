@@ -33,13 +33,22 @@ public class HomeSteps {
 		browser.home.searchItem(item);
 	}
 	
-	/* LUMA-8 */
+	/* LUMA-8, LUMA-9 */
 	@Given("I go to {string} > {string} > {string}")
 	public void goToItem(String header, String section, String items)
 	{
 		browser.home.goToHeader(header);
 		browser.home.goToSection(section);
 		browser.home.goToItem(items);
+		browser.home.clickOnReference();
+	}
+	
+	/* LUMA-10 */
+	@Given("I go to {string} > {string}")
+	public void goToItem(String header, String section)
+	{
+		browser.home.goToHeader(header);
+		browser.home.goToSection(section);
 		browser.home.clickOnReference();
 	}
 	

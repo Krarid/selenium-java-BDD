@@ -70,6 +70,6 @@ public class Items {
 			}
 		}
 		
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.size > div.clearfix > div.swatch-option")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("product-addtocart-button")));
 	}
 }

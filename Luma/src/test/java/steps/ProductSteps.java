@@ -21,4 +21,13 @@ public class ProductSteps {
 		browser.product.clickOnCart();
 		browser.product.proceedToCheckout();
 	}
+	
+	@And("I buy {string} units")
+	public void buyUnits(String units)
+	{
+		browser.product.addQuantity(units);
+		browser.product.addToCart();
+		browser.product.clickOnCart();
+		browser.product.proceedToCheckout();
+	}
 }
