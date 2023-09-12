@@ -137,3 +137,12 @@ Feature: Luma
 	When I click on cart
 	Then I validate there are no items in the shipping cart
 	
+	@LUMA-12
+	Scenario Outline: User can sign in
+	Given I go to login page
+	When I enter "<username>" and "<password>" as my credentials
+	Then I validate I was logged in
+	
+	Examples:
+	|	username							|	password		|
+	| vegel80345@sesxe.com	|	Test123@QA$	|

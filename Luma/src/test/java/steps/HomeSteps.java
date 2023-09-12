@@ -2,6 +2,7 @@ package steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomeSteps {
@@ -52,6 +53,12 @@ public class HomeSteps {
 		browser.home.clickOnReference();
 	}
 	
+	@Given("I go to login page")
+	public void goToLoginPage()
+	{
+		browser.home.goToLogin();
+	}
+	
 	@When("I click on search autocomplete")
 	public void clickOnAutocomplete()
 	{
@@ -62,6 +69,12 @@ public class HomeSteps {
 	public void hitEnterButton()
 	{
 		browser.home.hitEnterButton();
+	}
+	
+	@Then("I validate I was logged in")
+	public void validateIWasLoggedIn()
+	{
+		browser.home.wasUserLoggedIn();
 	}
 	
 	@After

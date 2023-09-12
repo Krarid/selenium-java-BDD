@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -37,6 +38,14 @@ public class Home {
 	private List<WebElement> items;
 	
 	private WebElement reference;
+	
+	@FindBy(css = "div.header span.logged-in")
+	@CacheLookup
+	private WebElement welcome;
+	
+	@FindBy(css = "div.panel.header > ul > li.authorization-link > a[href*='login']")
+	@CacheLookup
+	private WebElement signIn;
 	
 	private WebDriver driver;
 	private Actions builder;
@@ -113,8 +122,23 @@ public class Home {
 		}
 	}
 	
+	public void goToLogin()
+	{
+		signIn.click();
+	}
+	
 	public void clickOnReference()
 	{
 		reference.click();
+	}
+	
+	public void wasUserLoggedIn()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+		
+		wait.until( ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.header span.logged-in")) );
+		
+		Assert.assertEquals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/");
+		Assert.assertTrue(welcome.getText().contains("Welcome"));
 	}
 }

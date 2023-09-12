@@ -13,6 +13,7 @@ public class Browser {
 	protected WhatIsNew whatIsNew;
 	protected Items items;
 	protected Checkout checkout;
+	protected Login login;
 	
 	public Browser()
 	{
@@ -22,6 +23,7 @@ public class Browser {
 		whatIsNew = new WhatIsNew(driver);
 		items = new Items(driver);
 		checkout = new Checkout(driver);
+		login = new Login(driver);
 	}
 	
 }
