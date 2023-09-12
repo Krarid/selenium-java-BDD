@@ -132,3 +132,8 @@ Feature: Luma
 	|	header	|	section	|	product							|	units	|
 	|	Gear		|	Bags		|	Fusion Backpack			|	1			|
 	
+	@LUMA-11
+	Scenario: Validate message when there are no items in the shopping cart
+	When I click on cart
+	Then I validate there are no items in the shipping cart
+	

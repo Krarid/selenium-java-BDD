@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -40,6 +41,10 @@ public class Product {
 	@FindBy(css = "div.product > div.product-item-details > strong > a")
 	@CacheLookup
 	private WebElement product;
+	
+	@FindBy(css = "#minicart-content-wrapper > div.block-content > strong")
+	@CacheLookup
+	private WebElement cartMessage;
 	
 	private WebDriver driver;
 	
@@ -108,5 +113,10 @@ public class Product {
 		proceed.click();
 		
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("customer-email")));
+	}
+	
+	public void areThereItemsInTheShippingCart()
+	{
+		Assert.assertEquals(cartMessage.getText(), "You have no items in your shopping cart.");
 	}
 }

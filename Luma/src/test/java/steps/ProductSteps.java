@@ -1,6 +1,8 @@
 package steps;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class ProductSteps {
 	
@@ -29,5 +31,17 @@ public class ProductSteps {
 		browser.product.addToCart();
 		browser.product.clickOnCart();
 		browser.product.proceedToCheckout();
+	}
+	
+	@When("I click on cart")
+	public void clickOnCart()
+	{
+		browser.product.clickOnCart();
+	}
+	
+	@Then("I validate there are no items in the shipping cart")
+	public void areThereItemsInTheShippingCart()
+	{
+		browser.product.areThereItemsInTheShippingCart();
 	}
 }
