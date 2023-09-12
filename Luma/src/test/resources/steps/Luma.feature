@@ -146,3 +146,11 @@ Feature: Luma
 	Examples:
 	|	username							|	password		|
 	| vegel80345@sesxe.com	|	Test123@QA$	|
+	
+	@LUMA-13
+	Scenario: User can create an account
+	Given I go to create an account
+	When I fill the account details
+	| First Name	|	Last Name	|	Email									|	Password		|	Confirm password	|
+	|	Test				|	Test			|	vohola2224@sesxe.com	|	Test123@QA$	|	Test123@QA$				|
+	Then I validate my account was created

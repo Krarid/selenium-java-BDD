@@ -59,6 +59,12 @@ public class HomeSteps {
 		browser.home.goToLogin();
 	}
 	
+	@Given("I go to create an account")
+	public void goToCreateAnAccount()
+	{
+		browser.home.goToCreateAccount();
+	}
+	
 	@When("I click on search autocomplete")
 	public void clickOnAutocomplete()
 	{

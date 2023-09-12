@@ -43,9 +43,13 @@ public class Home {
 	@CacheLookup
 	private WebElement welcome;
 	
-	@FindBy(css = "div.panel.header > ul > li.authorization-link > a[href*='login']")
+	@FindBy(css = "div.panel.header a[href*='login']")
 	@CacheLookup
 	private WebElement signIn;
+	
+	@FindBy(css = "div.panel.header a[href*='create']")
+	@CacheLookup
+	private WebElement createAccount;
 	
 	private WebDriver driver;
 	private Actions builder;
@@ -125,6 +129,11 @@ public class Home {
 	public void goToLogin()
 	{
 		signIn.click();
+	}
+	
+	public void goToCreateAccount()
+	{
+		createAccount.click();
 	}
 	
 	public void clickOnReference()

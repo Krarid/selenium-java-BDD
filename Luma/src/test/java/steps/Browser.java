@@ -14,6 +14,7 @@ public class Browser {
 	protected Items items;
 	protected Checkout checkout;
 	protected Login login;
+	protected CreateAccount createAccount;
 	
 	public Browser()
 	{
@@ -24,6 +25,7 @@ public class Browser {
 		items = new Items(driver);
 		checkout = new Checkout(driver);
 		login = new Login(driver);
+		createAccount = new CreateAccount(driver);
 	}
 	
 }
