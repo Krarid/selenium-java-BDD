@@ -1,5 +1,6 @@
 package page.objects;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Items {
@@ -18,7 +21,7 @@ public class Items {
 	
 	@FindBy(css = "li.product-item")
 	@CacheLookup
-	private List<WebElement> items;
+	private List<WebElement> products;
 	
 	@FindBy(css = "div.message.notice")
 	@CacheLookup
@@ -37,12 +40,12 @@ public class Items {
 		Assert.assertEquals(title.getText(), page);
 	}
 	
-	public void isItemDisplayedInThePage(String itemName)
+	public void isItemDisplayedInThePage(String product)
 	{
 		boolean isDisplayed = false;
 		
-		for( WebElement item : items ) {
-			if( item.findElement(By.cssSelector("strong a")).getText().contains(itemName) ) {
+		for( WebElement item : products ) {
+			if( item.findElement(By.cssSelector("strong a")).getText().contains(product) ) {
 				isDisplayed = true;
 				break;
 			}
@@ -54,5 +57,19 @@ public class Items {
 	public void isNoSearchMessageDisplayed(String noSearch)
 	{
 		Assert.assertEquals(noSearchMessage.getText(), noSearch );
+	}
+	
+	public void clickOnProduct(String product)
+	{		
+		WebDriverWait wait = new WebDriverWait( driver, Duration.ofSeconds(10) );
+		
+		for( WebElement p : products ) {
+			if( p.findElement(By.cssSelector("strong a")).getText().contains(product) ) {
+				p.click();
+				break;
+			}
+		}
+		
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.size > div.clearfix > div.swatch-option")));
 	}
 }

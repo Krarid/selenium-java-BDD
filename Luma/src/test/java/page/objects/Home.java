@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -27,12 +28,24 @@ public class Home {
 	@CacheLookup
 	private List<WebElement> searchAutocomplete;
 	
+	@FindBy(css = "ul > li.level0")
+	@CacheLookup
+	private List<WebElement> headers;
+	
+	private List<WebElement> sections;
+	
+	private List<WebElement> items;
+	
+	private WebElement reference;
+	
 	private WebDriver driver;
+	private Actions builder;
 	private String url = "https://magento.softwaretestingboard.com/";
 	
 	public Home(WebDriver driver)
 	{
 		this.driver = driver;
+		this.builder = new Actions(this.driver);
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -63,5 +76,45 @@ public class Home {
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div#search_autocomplete ul li")));
 		
 		searchAutocomplete.get(0).click();
+	}
+	
+	public void goToHeader(String header)
+	{
+		for( WebElement h: headers ) {
+			if( h.getText().equalsIgnoreCase(header) ) {
+				builder.moveToElement(h).perform();
+				reference = h;
+			}
+		}
+	}
+	
+	public void goToSection(String section)
+	{
+		sections = reference.findElements(By.cssSelector("a + ul > li.level1"));
+		
+		for( WebElement s: sections ) {
+			if( s.getText().equalsIgnoreCase(section) ) {
+				builder.moveToElement(s).perform();
+				reference = s;
+			}
+		}
+		
+		builder.moveToElement(reference);
+	}
+	
+	public void goToItem(String item)
+	{
+		items = reference.findElements(By.cssSelector("a + ul > li.level2"));
+		
+		for(WebElement i: items) {
+			if( i.getText().equalsIgnoreCase(item) ) {
+				reference = i;
+			}
+		}
+	}
+	
+	public void clickOnReference()
+	{
+		reference.click();
 	}
 }

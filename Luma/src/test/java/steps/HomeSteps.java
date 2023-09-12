@@ -3,7 +3,6 @@ package steps;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
 
 public class HomeSteps {
 	
@@ -34,29 +33,26 @@ public class HomeSteps {
 		browser.home.searchItem(item);
 	}
 	
+	/* LUMA-8 */
+	@Given("I go to {string} > {string} > {string}")
+	public void goToItem(String header, String section, String items)
+	{
+		browser.home.goToHeader(header);
+		browser.home.goToSection(section);
+		browser.home.goToItem(items);
+		browser.home.clickOnReference();
+	}
+	
 	@When("I click on search autocomplete")
 	public void clickOnAutocomplete()
 	{
 		browser.home.clickOnAutocomplete();
 	}
 	
-	
-	@When("I add Hero Hoodie to the cart")
-	public void addItemToTheCart() {
-		browser.product.selectSize(3);
-		browser.product.selectColor(2);
-		browser.product.addToCart();
-	}
-	
 	@When("I hit Enter button")
 	public void hitEnterButton()
 	{
 		browser.home.hitEnterButton();
-	}
-	
-	@Then("I validate the Hero Hoodie was added to the cart")
-	public void validateTheItemWasAddedToTheCart() {
-		browser.product.isItemInTheCart();
 	}
 	
 	@After

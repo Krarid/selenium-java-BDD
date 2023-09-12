@@ -87,3 +87,19 @@ Feature: Luma
 	Examples:
 	| item			|
 	|	QWERTY		|
+	
+	@LUMA-8
+	Scenario Outline: Women accesories can be purchased
+		Given I go to "<header>" > "<section>" > "<item>"
+		When I click on "<product>" product
+		And I buy "<units>" units of "<size>" size and "<color>" color
+		And I fill the shipping details with following data
+		|	Email					|	First name	|	Last name	|	Street	|	City		|	State		|	ZIP			|	Country		|	Phone number	|	Shipping method	|
+		|	hola@test.com	|	Test				|	Test			|	Test		|	Test		|	Berlin	|	12345		|	Germany		|	12345678			|	Fixed						|
+		Then I validate the order was successful
+		
+	Examples:
+	|	header	|	section	|	item		|	product						|	units	|	size	|	color	|
+	|	Women		|	Tops		|	Jackets	|	Jade Yoga Jacket	|	1			|	M			|	green	|
+	|	Women		|	Bottoms	|	Pants		|	Portia Capri			|	20		|	29		|	blue	|
+	
