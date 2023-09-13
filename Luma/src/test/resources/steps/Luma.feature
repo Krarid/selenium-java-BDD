@@ -119,7 +119,7 @@ Feature: Luma
 	|	Men			|	Bottoms	|	Pants		|	Livingston					|	99		|	34		|	black	|
 	
 	@LUMA-10
-	Scenario Outline: Men accesories can be purchased
+	Scenario Outline: Gear accesories can be purchased
 		Given I go to "<header>" > "<section>"
 		When I click on "<product>" product
 		And I buy "<units>" units
