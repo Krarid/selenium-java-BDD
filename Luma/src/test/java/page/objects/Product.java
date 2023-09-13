@@ -1,5 +1,6 @@
 package page.objects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -21,6 +22,10 @@ public class Product {
 	@CacheLookup
 	private List<WebElement> colors;
 	
+	@FindBy(css = "input#qty")
+	@CacheLookup
+	private WebElement quantity;
+	
 	@FindBy(id = "product-addtocart-button")
 	@CacheLookup
 	private WebElement addToCart;
@@ -29,9 +34,17 @@ public class Product {
 	@CacheLookup
 	private WebElement cart;
 	
+	@FindBy(xpath = "//button[contains(text(), 'Proceed')]")
+	@CacheLookup
+	private WebElement proceed;
+	
 	@FindBy(css = "div.product > div.product-item-details > strong > a")
 	@CacheLookup
 	private WebElement product;
+	
+	@FindBy(css = "#minicart-content-wrapper > div.block-content > strong")
+	@CacheLookup
+	private WebElement cartMessage;
 	
 	private WebDriver driver;
 	
@@ -46,9 +59,32 @@ public class Product {
 		sizes.get(size).click();
 	}
 	
+	public void selectSize(String size)
+	{
+		for( WebElement s: sizes ) {
+			if( s.getAttribute("option-label").equalsIgnoreCase(size) )
+				s.click();
+		}
+	}
+	
 	public void selectColor(int color)
 	{
 		colors.get(color).click();
+	}
+	
+	public void selectColor(String color)
+	{
+ 		
+		for( WebElement c: colors ) {
+			if( c.getAttribute("option-label").equalsIgnoreCase(color) )
+				c.click();
+		}
+	}
+	
+	public void addQuantity(String qty)
+	{
+		quantity.clear();
+		quantity.sendKeys(qty);
 	}
 	
 	public void addToCart()
@@ -65,10 +101,22 @@ public class Product {
 		}
 	}
 	
-	public void isItemInTheCart()
+	public void clickOnCart()
 	{
+		cart.click();		
+	}
+	
+	public void proceedToCheckout()
+	{
+		WebDriverWait wait = new WebDriverWait( driver, Duration.ofSeconds(10) );
 		
-		cart.click();
-		Assert.assertEquals(product.getText(), "Hero Hoodie");
+		proceed.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("customer-email")));
+	}
+	
+	public void areThereItemsInTheShippingCart()
+	{
+		Assert.assertEquals(cartMessage.getText(), "You have no items in your shopping cart.");
 	}
 }

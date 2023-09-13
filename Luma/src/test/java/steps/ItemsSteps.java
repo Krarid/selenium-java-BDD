@@ -1,6 +1,7 @@
 package steps;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class ItemsSteps {
 	
@@ -9,6 +10,12 @@ public class ItemsSteps {
 	public ItemsSteps(Browser browser)
 	{
 		this.browser = browser;
+	}
+	
+	@When("I click on {string} product")
+	public void clickOnProduct( String product )
+	{
+		browser.items.clickOnProduct(product);
 	}
 
 	/* LUMA-1 | LUMA-2 */
@@ -23,5 +30,12 @@ public class ItemsSteps {
 	public void validateTheItemIsDisplayedInThePage(String item)
 	{
 		browser.items.isItemDisplayedInThePage(item);
+	}
+	
+	/* LUMA-7 */
+	@Then("I validate the {string} message gets displayed")
+	public void validateTheNoResultsMessageGetsDisplayed(String message)
+	{
+		browser.items.isNoSearchMessageDisplayed(message);
 	}
 }
