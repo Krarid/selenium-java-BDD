@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import resources.Screenshot;
 
 public class ProductSteps {
 	
@@ -25,12 +26,19 @@ public class ProductSteps {
 	}
 	
 	@And("I buy {string} units")
-	public void buyUnits(String units)
+	public void buyUnits(String units) throws Exception
 	{
-		browser.product.addQuantity(units);
-		browser.product.addToCart();
-		browser.product.clickOnCart();
-		browser.product.proceedToCheckout();
+		try {
+			browser.product.addQuantity(units);
+			browser.product.addToCart();
+			browser.product.clickOnCart();
+			browser.product.proceedToCheckout();
+		} catch( Exception e ) {
+			System.err.print("Exception ocurred: " + e);
+			Screenshot.takeScreenshot(browser.driver, "LUMA-10.png" );
+			
+			throw e;
+		}
 	}
 	
 	@When("I click on cart")
