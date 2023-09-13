@@ -27,6 +27,8 @@ public class Browser {
 		checkout = new Checkout(driver);
 		login = new Login(driver);
 		createAccount = new CreateAccount(driver);
+		
+		driver.manage().window().maximize();
 	}
 	
 	@After
