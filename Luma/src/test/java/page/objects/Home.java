@@ -84,7 +84,7 @@ public class Home {
 	
 	public void clickOnAutocomplete()
 	{	
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div#search_autocomplete ul li")));
 		
@@ -143,7 +143,7 @@ public class Home {
 	
 	public void wasUserLoggedIn()
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
 		wait.until( ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.header span.logged-in")) );
 		

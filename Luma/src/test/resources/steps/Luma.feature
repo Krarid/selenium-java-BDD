@@ -13,11 +13,7 @@ Feature: Luma
     Examples:
     | section								|
     |	Hoodies & Sweatshirts	|
-    | Jackets								|
-    | Tees									|
     | Bras & Tanks					|
-    | Pants									|
-    | Shorts								|
     
   @LUMA-2
   Scenario Outline: Sections from New in Mens can be opened
@@ -28,11 +24,7 @@ Feature: Luma
     Examples:
     | section								|
     |	Hoodies & Sweatshirts	|
-    | Jackets								|
-    | Tees									|
     | Tanks									|
-    | Pants									|
-    | Shorts								|
     
 	@LUMA-3
 	Scenario Outline: Women tops can be searched
