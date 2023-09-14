@@ -25,3 +25,29 @@ replay_pid*
 /.metadata/
 
 .DS_Store
+
+Luma/test-output/Default suite/Default test.html
+
+Luma/test-output/Default suite/Default test.xml
+
+Luma/test-output/Default suite/testng-failed.xml
+
+Luma/test-output/emailable-report.html
+
+Luma/test-output/index.html
+
+Luma/test-output/junitreports/TEST-runners.FailedRunner.xml
+
+Luma/test-output/junitreports/TEST-runners.TestRunner.xml
+
+Luma/test-output/old/Default suite/methods-alphabetical.html
+
+Luma/test-output/old/Default suite/methods.html
+
+Luma/test-output/old/Default suite/toc.html
+
+Luma/test-output/old/index.html
+
+Luma/test-output/testng-failed.xml
+
+Luma/test-output/testng-results.xml
