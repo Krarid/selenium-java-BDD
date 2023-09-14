@@ -137,7 +137,7 @@ Feature: Luma
 	
 	Examples:
 	|	username							|	password		|
-	| @sesxe.com	|	Test123@QA$	|
+	| vohola2224@sesxe.com	|	Test123@QA$	|
 	
 	@LUMA-13
 	Scenario: User can create an account

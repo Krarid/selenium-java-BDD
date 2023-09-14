@@ -145,7 +145,7 @@ public class Home {
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		wait.until( ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.header span.logged-in")) );
+		wait.until( ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("div.header span.logged-in"), "Welcome" ));
 		
 		Assert.assertEquals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/");
 		Assert.assertTrue(welcome.getText().contains("Welcome"));

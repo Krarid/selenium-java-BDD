@@ -105,6 +105,7 @@ public class Checkout {
 		}
 		
 		wait.until(ExpectedConditions.elementToBeClickable(placeOrderButton));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("img[alt='Loading...']")));
 	}
 	
 	public void placeOrder()
