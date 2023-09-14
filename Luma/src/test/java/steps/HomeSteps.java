@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -81,11 +80,5 @@ public class HomeSteps {
 	public void validateIWasLoggedIn()
 	{
 		browser.home.wasUserLoggedIn();
-	}
-	
-	@After
-	public void tearDown() throws Exception 
-	{
-		browser.driver.quit();
 	}
 }

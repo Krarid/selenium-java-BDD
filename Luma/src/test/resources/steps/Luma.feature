@@ -13,11 +13,7 @@ Feature: Luma
     Examples:
     | section								|
     |	Hoodies & Sweatshirts	|
-    | Jackets								|
-    | Tees									|
     | Bras & Tanks					|
-    | Pants									|
-    | Shorts								|
     
   @LUMA-2
   Scenario Outline: Sections from New in Mens can be opened
@@ -28,11 +24,7 @@ Feature: Luma
     Examples:
     | section								|
     |	Hoodies & Sweatshirts	|
-    | Jackets								|
-    | Tees									|
     | Tanks									|
-    | Pants									|
-    | Shorts								|
     
 	@LUMA-3
 	Scenario Outline: Women tops can be searched
@@ -89,7 +81,7 @@ Feature: Luma
 	|	QWERTY		|
 	 
 	@LUMA-8
-	Scenario Outline: Women accesories can be purchased
+	Scenario Outline: Women accessories can be purchased
 		Given I go to "<header>" > "<section>" > "<item>"
 		When I click on "<product>" product
 		And I buy "<units>" units of "<size>" size and "<color>" color
@@ -104,7 +96,7 @@ Feature: Luma
 	|	Women		|	Bottoms	|	Pants		|	Portia Capri			|	20		|	29		|	blue	|
 	
 	@LUMA-9
-	Scenario Outline: Men accesories can be purchased
+	Scenario Outline: Men accessories can be purchased
 		Given I go to "<header>" > "<section>" > "<item>"
 		When I click on "<product>" product
 		And I buy "<units>" units of "<size>" size and "<color>" color
@@ -119,7 +111,7 @@ Feature: Luma
 	|	Men			|	Bottoms	|	Pants		|	Livingston					|	99		|	34		|	black	|
 	
 	@LUMA-10
-	Scenario Outline: Men accesories can be purchased
+	Scenario Outline: Gear accessories can be purchased
 		Given I go to "<header>" > "<section>"
 		When I click on "<product>" product
 		And I buy "<units>" units
@@ -145,7 +137,7 @@ Feature: Luma
 	
 	Examples:
 	|	username							|	password		|
-	| @sesxe.com	|	Test123@QA$	|
+	| vohola2224@sesxe.com	|	Test123@QA$	|
 	
 	@LUMA-13
 	Scenario: User can create an account

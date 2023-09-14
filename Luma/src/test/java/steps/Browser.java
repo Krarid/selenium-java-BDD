@@ -3,6 +3,7 @@ package steps;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.cucumber.java.After;
 import page.objects.*;
 
 public class Browser {
@@ -26,6 +27,13 @@ public class Browser {
 		checkout = new Checkout(driver);
 		login = new Login(driver);
 		createAccount = new CreateAccount(driver);
+		
+		driver.manage().window().maximize();
 	}
 	
+	@After
+	public void tearDown() throws Exception 
+	{
+		driver.quit();
+	}
 }
